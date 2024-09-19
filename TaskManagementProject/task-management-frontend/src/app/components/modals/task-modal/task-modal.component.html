@@ -1,0 +1,54 @@
+<div class="mat-background-primary self-center p-8 bg-blue-700 w-[100%] flex justify-center items-center">
+  <h2 mat-dialog-title class=" text-white">{{ isEditMode ? 'Edit Task' : 'Add Task' }}</h2>
+</div>
+
+
+<mat-dialog-content>
+  <form #taskForm="ngForm" (ngSubmit)="onSubmit()">
+    <!-- Task Name -->
+    <mat-form-field class="w-full" appearance="fill">
+      <mat-label>Task Name</mat-label>
+      <input matInput [(ngModel)]="task.name" name="name" required>
+    </mat-form-field>
+
+    <!-- Task Description -->
+    <mat-form-field class="w-full" appearance="fill">
+      <mat-label>Description</mat-label>
+      <textarea matInput rows="4" [(ngModel)]="task.description" name="description" required></textarea>
+    </mat-form-field>
+
+    <!-- Due Date -->
+    <mat-form-field class="w-full" appearance="fill">
+      <mat-label>Due Date</mat-label>
+      <input matInput [(ngModel)]="task.dueDate" name="dueDate" type="date" required>
+    </mat-form-field>
+<!--    <mat-form-field class="w-full" appearance="fill">-->
+<!--      <mat-label>Due Date</mat-label>-->
+<!--      <input matInput [matDatepicker]="dueDatePicker" [(ngModel)]="task.dueDate" name="dueDate" required>-->
+<!--      <mat-datepicker-toggle matSuffix [for]="dueDatePicker"></mat-datepicker-toggle>-->
+<!--      <mat-datepicker #dueDatePicker></mat-datepicker>-->
+<!--    </mat-form-field>-->
+<!--    <mat-form-field>-->
+<!--      <input matInput [matDatepicker]="picker" placeholder="Choose a date">-->
+<!--      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>-->
+<!--      <mat-datepicker #picker></mat-datepicker>-->
+<!--    </mat-form-field>-->
+
+    <!-- Task State -->
+    <mat-form-field class="w-full" appearance="fill">
+      <mat-label>Task State</mat-label>
+      <mat-select [(ngModel)]="task.taskState" name="taskState" required>
+        <mat-option value="TODO">To Do</mat-option>
+        <mat-option value="ONGOING">Ongoing</mat-option>
+        <mat-option value="COMPLETED">Completed</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </form>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button (click)="closeModal()">Cancel</button>
+  <button mat-raised-button color="primary" [disabled]="!taskForm.form.valid" (click)="onSubmit()">
+    {{ isEditMode ? 'Update' : 'Create' }}
+  </button>
+</mat-dialog-actions>

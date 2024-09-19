@@ -1,0 +1,28 @@
+
+
+<mat-sidenav mode="side" opened class="w-[16rem] border-2 border-gray-400 rounded-lg text-black h-full flex flex-col" >
+  <!-- Top Section: User Info -->
+  <div class="flex flex-col items-center gap-[1rem] p-4">
+    <mat-icon>account_circle</mat-icon>
+    <h2 class="mt-2 text-lg text-black" *ngIf="isLoggedIn">{{ userName }}</h2>
+    <div class="p-4">
+      <button mat-raised-button color="warn" class="w-full" *ngIf="isLoggedIn" (click)="goToLogout()">
+        Logout
+      </button>
+    </div>
+    <div class="p-4">
+      <button mat-raised-button color="primary" class="bg-blue-500 hover:bg-blue-900 text-white font-bold py-2 px-4 rounded" *ngIf="!isLoggedIn" (click)="goToLogin()">Login</button>
+    </div>
+  </div>
+
+  <mat-divider></mat-divider>
+
+  <!-- Navigation Links -->
+  <mat-nav-list class="flex flex-col items-center gap-6 w-full">
+    <mat-list-item (click)="navigateTo('projects')" class="cursor-pointer flex flex-row justify-center items-center gap-4 w-full">
+      <mat-icon>folder</mat-icon>
+      <h3>Projects</h3>
+    </mat-list-item>
+  </mat-nav-list>
+
+</mat-sidenav>

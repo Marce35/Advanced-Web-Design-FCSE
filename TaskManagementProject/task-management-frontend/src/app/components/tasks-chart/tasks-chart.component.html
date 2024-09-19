@@ -1,0 +1,27 @@
+<div class="task-chart-container">
+  <!-- Pie Chart -->
+  <div style="display: block; margin-bottom: 40px;">
+    <h2 class="text-center">Projects by Category (Pie Chart)</h2>
+    <canvas baseChart class="self-center"
+            [type]="'pie'"
+            [datasets]="pieChartDatasets"
+            [labels]="pieChartLabels"
+            [options]="pieChartOptions"
+            [legend]="pieChartLegend"
+            [plugins]="pieChartPlugins">
+    </canvas>
+  </div>
+
+  <!-- Bar Chart -->
+  <div style="display: block;">
+    <h2 class="text-center">Projects by Category (Bar Chart)</h2>
+    <canvas baseChart
+            [type]="'bar'"
+            [datasets]="barChartDatasets"
+            [labels]="barChartLabels"
+            [options]="barChartOptions"
+            [legend]="barChartLegend"
+            [plugins]="barChartPlugins">
+    </canvas>
+  </div>
+</div>

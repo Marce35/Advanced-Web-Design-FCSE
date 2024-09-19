@@ -1,0 +1,39 @@
+<div class="mat-background-primary self-center p-8 bg-blue-700 w-[100%] flex justify-center items-center">
+  <h2 mat-dialog-title class=" text-white">{{ isEditMode ? 'Edit Project' : 'Add Project' }}</h2>
+</div>
+
+<mat-dialog-content>
+  <!-- Add template reference #projectForm to the form -->
+  <form #projectForm="ngForm" (ngSubmit)="onSubmit()">
+    <!-- Project Name -->
+    <mat-form-field class="w-full" appearance="fill">
+      <mat-label>Project Name</mat-label>
+      <input matInput [(ngModel)]="project.name" name="name" required>
+    </mat-form-field>
+
+    <!-- Description -->
+    <mat-form-field class="w-full" appearance="fill">
+      <mat-label>Description</mat-label>
+      <textarea matInput rows="4" [(ngModel)]="project.description" name="description" required></textarea>
+    </mat-form-field>
+
+    <!-- Category -->
+    <mat-form-field class="w-full" appearance="fill">
+      <mat-label>Category</mat-label>
+      <mat-select [(ngModel)]="project.category" name="category" required>
+        <mat-option [value]="Category.PROGRAMMING">Programming</mat-option>
+        <mat-option [value]="Category.WORKOUT">Workout</mat-option>
+        <mat-option [value]="Category.BASIC">Basic</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </form>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button (click)="closeModal()">Cancel</button>
+  <!-- Disable the button when the form is invalid -->
+  <button mat-raised-button color="primary" [disabled]="!projectForm.form.valid" (click)="onSubmit()">
+    {{ isEditMode ? 'Update' : 'Create' }}
+  </button>
+</mat-dialog-actions>
+

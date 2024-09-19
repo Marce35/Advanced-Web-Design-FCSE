@@ -1,0 +1,61 @@
+<!--<div class="flex justify-between items-center mb-6">-->
+<!--  <h2 class="text-2xl font-bold">Your Projects</h2>-->
+<!--  <button mat-raised-button color="primary" (click)="openAddProjectModal()">Add Project</button>-->
+<!--</div>-->
+
+<!--&lt;!&ndash; Add the chart component here &ndash;&gt;-->
+<!--<div class="mb-12">-->
+<!--  <app-projects-chart></app-projects-chart>-->
+<!--</div>-->
+
+<!--<div class="grid md:grid-cols-3 grid-rows-3 gap-6">-->
+<!--  <mat-card *ngFor="let project of projects" class="p-4 shadow-md">-->
+<!--    <mat-card-header>-->
+<!--      <mat-card-title>{{ project.name }}</mat-card-title>-->
+<!--    </mat-card-header>-->
+<!--    <mat-card-content>-->
+<!--      <p>{{ project.description }}</p>-->
+<!--      <p class="text-sm text-gray-600">{{ project.category }}</p>-->
+<!--    </mat-card-content>-->
+<!--    <mat-card-actions class="flex justify-between mt-4">-->
+<!--      <button mat-raised-button color="primary" (click)="navigateToProjectTasks(project.id, project.name)">View tasks</button>-->
+<!--      <button mat-button color="accent" (click)="openEditProjectModal(project)">Edit</button>-->
+<!--      <button mat-button color="warn" (click)="deleteProject(project.id)">Delete</button>-->
+<!--    </mat-card-actions>-->
+<!--  </mat-card>-->
+<!--</div>-->
+
+@if(projects && projects[0].category){
+  <div class="flex justify-between items-center mb-6">
+    <h2 class="text-2xl font-bold">Your Projects</h2>
+    <button mat-raised-button color="primary" (click)="openAddProjectModal()">Add Project</button>
+  </div>
+
+  <!-- Add the chart component here -->
+
+    <div class="mb-12">
+      <app-projects-chart></app-projects-chart>
+    </div>
+
+
+
+  <!-- Responsive grid for projects -->
+  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+    <mat-card *ngFor="let project of projects" class="p-4 shadow-md">
+      <mat-card-header>
+        <mat-card-title>{{ project.name }}</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <p>{{ project.description }}</p>
+        <p class="text-sm text-gray-600">{{ project.category }}</p>
+      </mat-card-content>
+      <mat-card-actions class="flex justify-between mt-4">
+        <button mat-raised-button color="primary" (click)="navigateToProjectTasks(project.id, project.name)">View tasks</button>
+        <button mat-button color="accent" (click)="openEditProjectModal(project)">Edit</button>
+        <button mat-button color="warn" (click)="deleteProject(project.id)">Delete</button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+}
+
+

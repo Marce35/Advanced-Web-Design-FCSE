@@ -1,0 +1,38 @@
+/*.chart-container {*/
+/*  display: flex;*/
+/*  flex-direction: row;*/
+/*  align-items: center;*/
+/*  gap: 10rem;*/
+/*  justify-content: center;*/
+/*}*/
+
+/*.chart-container canvas {*/
+/*  max-width: 600px;*/
+/*  width: 100%;*/
+/*}*/
+
+
+.chart-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10rem;
+  justify-content: center;
+}
+
+.chart-container canvas {
+  max-width: 600px;
+  width: 100%;
+}
+
+/* Media query to change flex-direction to column on smaller screens */
+@media (max-width: 768px) {
+  .chart-container {
+    flex-direction: column;
+    gap: 2rem; /* Reduced gap for smaller screens */
+  }
+
+  .chart-container canvas {
+    max-width: 100%; /* Make sure charts take full width on small screens */
+  }
+}
